@@ -13,7 +13,7 @@
         <div class="section" id="section1">
             <div class="intro">
                 <div class="bg-section">
-                    <video  data-autoplay muted loop id="video-home">
+                    <video data-autoplay muted loop id="video-home">
                         <source
                             data-src="https://scontent-ssn1-1.cdninstagram.com/v/t50.2886-16/104243747_348206852813412_1220187507728594635_n.mp4?efg=eyJ2ZW5jb2RlX3RhZyI6InZ0c192b2RfdXJsZ2VuLjcyMC5mZWVkLmRlZmF1bHQiLCJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSJ9&_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=MVzmUmLYwKIAX_OpNKo&vs=17976486703306093_3951192721&_nc_vs=HBksFQAYJEdDT2lOZ1prTXNVNXNUd0JBTXMyaU0wU191NFFia1lMQUFBRhUAAsgBABUAGCRHSFY4TlFiVDJzdnFkLVlBQUo4OVZqUmJUcFIwYmtZTEFBQUYVAgLIAQAoABgAGwAVAAAm2u%2FU0J7h7j8VAigCQzMsF0A9ZmZmZmZmGBJkYXNoX2Jhc2VsaW5lXzFfdjERAHXqBwA%3D&oe=6022401B&oh=0f429c0bbbfa027d095cc714ee96b776"
                             type="video/mp4" />
@@ -73,9 +73,15 @@
         </div>
     </footer>
     <!-- Scripts load     -->
-    <script src="../src/js/fullpage.js"></script>
-    <script>
 
+    <script>
+        new fullpage('#fullPage', {
+            autoScrolling: true,
+            navigation: true,
+            anchors: ['section1', 'section2', 'section3', 'section4', 'section5', 'section6'],
+            navigationTooltips: ['Home', 'Rastreio', 'Cotação', 'Serviço de Envio', 'Licenças', 'Parceiros']
+
+        })
     </script>
 </body>
 
