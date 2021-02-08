@@ -1,0 +1,38 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.section {
+    .intro {
+        height: 100%;
+        width: 100%;
+    }
+
+    .bg-section {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    #video-home {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    &:nth-child(1) .bg-section {
+        background-color: aquamarine;
+    }
+
+    &:nth-child(2) .bg-section {
+        background-color: blueviolet;
+    }
+
+    &:nth-child(3) .bg-section {
+        background-color: brown;
+    }
+
+
+}
