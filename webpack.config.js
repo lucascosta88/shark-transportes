@@ -1,12 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 module.exports = {
-    entry: './src/js/index.js',
+    entry: {
+        main: './src/js/index.js',
+        fullpage: './node_modules/fullpage.js/dist/fullpage.js',
+        initComponents: './src/js/initComponents.js',
+    },
     output: {
-        filename: 'main.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
@@ -25,32 +30,44 @@ module.exports = {
                 'css-loader'
             ]
         },
-        {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-env']
-                }
-            }
-        },
+
         {
             test: /\.(jpe?g|png|gif|svg)$/i,
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]'
             }
+        },
+        {
+            test: /\.(mov|mp4)$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]'
+                    }
+                }
+            ]
         }
         ]
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].[contenthash].css",
+        }),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
+            title: 'Caching',
             filename: 'index.html',
             template: './src/index.html'
         }),
-        new MiniCssExtractPlugin({
-            filename: 'style.css'
-        })
-    ]
-}
+
+    ],
+    output: {
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    optimization: {
+        runtimeChunk: 'single',
+    },
+};

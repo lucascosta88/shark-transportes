@@ -1,38 +1,72 @@
 html {
     scroll-behavior: smooth;
+    font-family: var(--font-family);
+}
+
+h1 {
+    font-size: var(--h1-size);
+}
+
+.section.active {
+
+
+    .intro {
+        .bg-section {
+            h1 {
+                opacity: 1;
+                animation-name: fadeInOpacity;
+                animation-iteration-count: 1;
+                animation-timing-function: ease-in;
+                animation-duration: 2s;
+
+            }
+        }
+    }
 }
 
 .section {
     .intro {
         height: 100%;
         width: 100%;
+
+        .bg-section {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            #video-home {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+            }
+
+            h1 {
+                opacity: 0;
+                position: absolute;
+                left: 50%;
+                top: 10%;
+                transform: translate(-50%, -10%);
+                background: linear-gradient(to left, #87c7df, #648896);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
     }
 
-    .bg-section {
-        display: flex;
-        width: 100%;
-        height: 100%;
+
+
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
     }
 
-    #video-home {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
+    100% {
+        opacity: 1;
     }
-
-    &:nth-child(1) .bg-section {
-        background-color: aquamarine;
-    }
-
-    &:nth-child(2) .bg-section {
-        background-color: blueviolet;
-    }
-
-    &:nth-child(3) .bg-section {
-        background-color: brown;
-    }
-
-
 }
