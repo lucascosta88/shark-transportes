@@ -1,1 +1,0 @@
-(self.webpackChunkshark_transportes=self.webpackChunkshark_transportes||[]).push([[883],{262:()=>{new fullpage("#fullPage",{autoScrolling:!0,navigation:!0,navigationTooltips:["Home","Rastreio","Cotação","Serviço de Envio","Licenças","Parceiros"],easingcss3:"ease-in"})}},0,[[262,666]]]);
