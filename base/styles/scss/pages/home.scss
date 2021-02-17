@@ -1,3 +1,15 @@
+.d-flex{
+  display: flex;
+}
+.flex-column{
+  flex-direction: column;
+}
+.flex-row{
+  flex-direction: row;
+}
+.col{
+  flex: 1
+}
 .section.active {
   .intro {
     .bg-section {
@@ -18,10 +30,13 @@
     width: 100%;
 
     .bg-section {
+      align-items: center;
       display: flex;
-      width: 100%;
+      flex-direction: column;
       height: 100%;
+      justify-content: center;
       position: relative;
+      width: 100%;
 
       #video-home {
         position: fixed;
@@ -41,8 +56,20 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+
+      .rastreio-de-encomenda{
+        
+      }
     }
   }
+}
+footer{
+  background-color: #e2e4e9;
+  bottom: 0;
+  height: 40px;
+  position: fixed;
+  padding: 10px 20px;
+  width: 100%;
 }
 
 @keyframes fadeInOpacity {

@@ -10,6 +10,6 @@ window.onload = function () {
       "Licenças",
       "Parceiros",
     ],
-    easingcss3: "ease-in",
+
   });
 };
