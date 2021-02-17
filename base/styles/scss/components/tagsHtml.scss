@@ -1,0 +1,19 @@
+input[type="text"] {
+    border-radius: 5px;
+    border: 1px solid #e2e4e9;
+    border: 1px solid #e2e2e2;
+    box-sizing: border-box;
+    color: #444;
+    outline: none;
+    padding: 12px 10px;
+    transition: 0.5s;
+
+}
+
+input[type=text]:focus {
+    border: 1px solid #e44;
+    box-sizing: border-box;
+}
+::placeholder{
+    color:#e2e2e2;
+}

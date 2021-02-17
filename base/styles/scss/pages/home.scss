@@ -1,0 +1,83 @@
+.d-flex{
+  display: flex;
+}
+.flex-column{
+  flex-direction: column;
+}
+.flex-row{
+  flex-direction: row;
+}
+.col{
+  flex: 1
+}
+.section.active {
+  .intro {
+    .bg-section {
+      h1 {
+        opacity: 1;
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 2s;
+      }
+    }
+  }
+}
+
+.section {
+  .intro {
+    height: 100%;
+    width: 100%;
+
+    .bg-section {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+
+      #video-home {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      h1 {
+        opacity: 0;
+        position: absolute;
+        left: 50%;
+        top: 10%;
+        transform: translate(-50%, -10%);
+        background: linear-gradient(to left, #87c7df, #648896);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .rastreio-de-encomenda{
+        
+      }
+    }
+  }
+}
+footer{
+  background-color: #e2e4e9;
+  bottom: 0;
+  height: 40px;
+  position: fixed;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

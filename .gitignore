@@ -1,4 +1,9 @@
-.DS_Store
-*.log
 node_modules
 .sass-cache
+.DS_Store
+package-lock.json
+yarn.lock
+**/.DS_Store
+.vscode
+assets/scripts/**
+assets/styles/**
