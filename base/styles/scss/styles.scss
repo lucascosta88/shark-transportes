@@ -1,8 +1,14 @@
+//Config
 @import "config/_settings";
 @import "config/_normalize";
+
+//Components
 
 @import "components/typography";
 @import "components/fullpage";
 @import "components/tagsHtml";
+@import "components/animate";
 
+
+//Pages
 @import "pages/home";

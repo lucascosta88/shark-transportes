@@ -4,6 +4,12 @@
     "lockfileVersion": 1,
     "requires": true,
     "dependencies": {
+        "@fortawesome/fontawesome-free": {
+            "version": "5.15.2",
+            "resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.2.tgz",
+            "integrity": "sha512-7l/AX41m609L/EXI9EKH3Vs3v0iA8tKlIOGtw+kgcoanI7p+e4I4GYLqW3UXWiTnjSFymKSmTTPKYrivzbxxqA==",
+            "dev": true
+        },
         "abbrev": {
             "version": "1.1.1",
             "resolved": "https://registry.npmjs.org/abbrev/-/abbrev-1.1.1.tgz",
@@ -987,9 +993,9 @@
             "integrity": "sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0="
         },
         "electron-to-chromium": {
-            "version": "1.3.665",
-            "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.665.tgz",
-            "integrity": "sha512-LIjx1JheOz7LM8DMEQ2tPnbBzJ4nVG1MKutsbEMLnJfwfVdPIsyagqfLp56bOWhdBrYGXWHaTayYkllIU2TauA=="
+            "version": "1.3.666",
+            "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.666.tgz",
+            "integrity": "sha512-/mP4HFQ0fKIX4sXltG6kfcoGrfNDZwCIyWbH2SIcVaa9u7Rm0HKjambiHNg5OEruicTl9s1EwbERLwxZwk19aw=="
         },
         "emoji-regex": {
             "version": "8.0.0",
@@ -1520,9 +1526,9 @@
             }
         },
         "fullpage.js": {
-            "version": "3.0.9",
-            "resolved": "https://registry.npmjs.org/fullpage.js/-/fullpage.js-3.0.9.tgz",
-            "integrity": "sha512-CBJZwOkOjX/RToG0L93LwJW4a+/67+AqGEvEagWh1N5KRgDXEOVKlo/TJzCzSI1LsOulb7yqXE8mOzRZzqeYMA=="
+            "version": "3.1.0",
+            "resolved": "https://registry.npmjs.org/fullpage.js/-/fullpage.js-3.1.0.tgz",
+            "integrity": "sha512-fbwb9MxcWHfWAR4bV5g+9aWFKdDrgDhFgtBTnfXZMIJU2CpSTbn+eZSKF827atCsLCXUFTMF0CgatagxvzIEqg=="
         },
         "function-bind": {
             "version": "1.1.1",

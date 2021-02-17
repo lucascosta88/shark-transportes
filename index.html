@@ -12,6 +12,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
 		rel="stylesheet" />
 
+	<!-- Our project just needs Font Awesome solid + brand -->
+	<script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
+	<script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
+	<script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
+
+
 	<link rel="stylesheet" href="./assets/styles/styles.min.css" />
 </head>
 
@@ -25,17 +31,20 @@
 					</video>
 				</div>
 			</div>
-		</div> 
+		</div>
 
 		<div class="section" id="section2">
 			<div class="intro">
 				<div class="bg-section">
-					<h1>Rastreio de encomenda</h1>
-					<div class="rastreio-de-encomenda">
-						<h4>Número da Nota</h4>
+					<h1 class="in-down">Rastreio de encomenda</h1>
+					<div class="rastreio-de-encomenda in-left">
+						<h4>Acompanhe suas encomendas</h4>
+						<h6>Fique atento as atualizações das suas encomendas</h6>
 						<input type="text" type="text" max-lenght="30" size="40"
 							placeholder="Insira o número de rastreio">
-						<div class="rastreio-de-encomenda__status">
+						<button><i class="fas fa-search"></i></button>
+						
+						<div class="rastreio-de-encomenda__status" id="StatusEncomenda">
 						</div>
 					</div>
 				</div>
@@ -45,7 +54,7 @@
 		<div class="section" id="section3">
 			<div class="intro">
 				<div class="bg-section">
-					<h1>Cotação</h1>
+					<h1 class="in-down">Cotação</h1>
 					<div class="form-cotacao">
 					</div>
 				</div>
@@ -55,7 +64,7 @@
 		<div class="section" id="section4">
 			<div class="intro">
 				<div class="bg-section">
-					<h1>Serviços de Envio</h1>
+					<h1 class="in-down">Serviços de Envio</h1>
 				</div>
 			</div>
 		</div>
@@ -63,7 +72,7 @@
 		<div class="section" id="section5">
 			<div class="intro">
 				<div class="bg-section">
-					<h1>Licenças</h1>
+					<h1 class="in-down">Licenças</h1>
 				</div>
 			</div>
 		</div>
@@ -71,7 +80,7 @@
 		<div class="section" id="section6">
 			<div class="intro">
 				<div class="bg-section">
-					<h1>Parceiros</h1>
+					<h1 class="in-down">Parceiros</h1>
 				</div>
 			</div>
 		</div>
