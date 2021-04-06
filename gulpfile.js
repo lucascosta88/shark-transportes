@@ -1,86 +1,117 @@
-const gulp = require("gulp");
-const gutil = require("gulp-util");
-const concat = require("gulp-concat");
-const terser = require("gulp-terser");
-const sass = require("gulp-sass");
-const cleanCSS = require("gulp-clean-css");
-const browserSync = require("browser-sync");
-const autoprefixer = require("gulp-autoprefixer");
-const plumber = require("gulp-plumber");
-const rename = require("gulp-rename");
+let gulp = require('gulp');
+let sass = require('gulp-sass');
+let autoprefixer = require('gulp-autoprefixer');
+let csscomb = require('gulp-csscomb');
+let webserver = require('gulp-webserver');
+let del = require('del');
+let livereload = require('gulp-livereload');
+let header = require('gulp-header');
+let whoami = require('whoami');
+let footer = require('gulp-footer');
+let findCssClasses = require('find-css-classes');
+let fs = require("fs");
+let tap = require('gulp-tap');
 
-const scripts = [
-  "node_modules/fullpage.js/dist/fullpage.js",
-  "base/scripts/main.js",
-];
+/**
+ * Options
+ */
 
-const styles = [
-  "node_modules/fullpage.js/dist/fullpage.css",
-  "base/styles/css/styles.css",
-];
+let options = {
+  server: {
+    root: './',
+    open: './index/',
+    port: 8080,
+    directoryListing: true
+  },
+  livereload: {
+    start: true
+  },
+  styles: {
+    src: 'styles/**/*.scss',
+    outputstyle: 'expanded',
+    dest: 'assets/styles'
+  },
+  get timestamp() { 
+    var d = new Date(),
+        date = d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear(),
+        time = d.getHours() + 'h' + String(d.getMinutes()).padStart(2, "0");
 
-gulp.task("browserSync", function () {
-  browserSync({
-    server: {
-      baseDir: "./",
-    },
-    notify: false,
-  });
-});
+    return date + ' ' + time;
+   }
+};
 
-gulp.task("bs-reload", function () {
-  browserSync.reload();
-});
+/**
+ * Plain functions tasks
+ */
 
-gulp.task("scripts", function () {
-  return gulp
-    .src(scripts)
-    .pipe(plumber())
-    .pipe(concat("main.js"))
-    .on("error", gutil.log)
-    .pipe(gulp.dest("assets/scripts"))
-    .pipe(rename({ suffix: ".min" }))
-    .pipe(terser())
-    .pipe(gulp.dest("assets/scripts"));
-});
+// Start Web Server http://localhost:80
+function server() {
+  return gulp.src(options.server.root)
+    .pipe(webserver({
+      port: options.server.port,
+      directoryListing: options.server.directoryListing,
+      open: options.server.open
+  }));
+};
 
-gulp.task("sass", function () {
-  return gulp
-    .src("base/styles/scss/styles.scss")
-    .pipe(sass().on("error", sass.logError))
-    .pipe(rename("styles.css"))
-    .pipe(gulp.dest("base/styles/css"));
-});
+// Livereload
+function reload(done) {
+  livereload({ 
+    start: options.livereload.start,
+    quiet: true
+  }), done();
+}
 
-gulp.task("styles", function () {
-  return gulp
-    .src(styles)
-    .pipe(
-      plumber({
-        errorHandler: function (err) {
-          console.log(err);
-          this.emit("end");
-        },
-      })
-    )
-    .pipe(
-      autoprefixer({
-        cascade: true,
-      })
-    )
-    .on("error", gutil.log)
-    .pipe(concat("styles.css"))
-    .pipe(gulp.dest("assets/styles"))
-    .pipe(rename({ suffix: ".min" }))
-    .pipe(cleanCSS())
-    .pipe(gulp.dest("assets/styles"));
-});
+// Compile SCSS to CSS
+function styles() {
+  return gulp.src(options.styles.src)
+  .pipe(sass({outputStyle:options.styles.outputstyle}).on('error', sass.logError))
+  //config csscomb in .csscomb.json (@ root folder)
+  .pipe(csscomb())
+  // .pipe(cleanCSS())
+  .pipe(autoprefixer({
+    overrideBrowserslist: ['last 15 versions', "ie >= 10"],
+    cascade: false
+  }))
+  .pipe(header('/* UPDATED ON: ' + options.timestamp + ' */ \n/* ' + whoami + ' */\n\n'))
+  .pipe(gulp.dest(options.styles.dest))
+  .pipe(livereload());
+}
 
-gulp.task("default", ["sass", "styles", "scripts"], function () {});
+// Watch Function
+function watch() {
+  return gulp.watch(options.styles.src),
+  livereload.listen(),
+  console.log('LiveReload Init');
+}
+// Delete Build Folder
+function delBuild () {
+  return (async () => {
+    const deletedPaths = await del(options.styles.dest);
+    console.log('Deleted folder: ', deletedPaths.join('\n'));
+  })();
+};
 
-gulp.task("watch", ["default", "browserSync"], function () {
-  gulp.watch("base/styles/scss/**/*.scss", ["sass"]);
-  gulp.watch("base/styles/css/*.css", ["styles", "bs-reload"]);
-  gulp.watch("base/scripts/*.js", ["scripts", "bs-reload"]);
-  gulp.watch(["*.html"], ["bs-reload"]);
-});
+
+/**
+ * Run! Time ( tasks declared as CommonJS 'exports' )
+ */
+let build = gulp.series( gulp.parallel(server, reload), styles, watch);
+
+// Init Server
+exports.server = server;
+
+// LiveReload
+exports.livereload = reload;
+
+// Compile SCSS to CSS
+exports.styles = styles;
+
+// Watch Task
+exports.watch = watch;
+
+// Delete Build Folder
+exports.delBuild = delBuild;
+
+// Default Task
+exports.default = build;

@@ -8,26 +8,20 @@
     "serve": "./node_modules/.bin/gulp watch"
   },
   "dependencies": {
-    "browser-sync": "^2.26.14",
-    "fullpage.js": "^3.0.9",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^2.0.0",
+    "del": "^4.1.1",
+    "find-css-classes": "^0.2.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-cli": "^2.2.1",
+    "gulp-csscomb": "^3.1.0",
+    "gulp-dependents": "^1.2.5",
+    "gulp-footer": "^2.0.2",
+    "gulp-header": "^2.0.9",
+    "gulp-livereload": "^4.0.2",
     "gulp-sass": "^4.1.0",
-    "gulp-sequence": "^1.0.0",
-    "gulp-shell": "^0.8.0",
-    "gulp-terser": "^2.0.1",
-    "gulp-uglify": "^3.0.2",
-    "gulp-util": "^3.0.8"
+    "gulp-tap": "^2.0.0",
+    "gulp-webserver": "^0.9.1",
+    "whoami": "0.0.3"
   },
-  "browserslist": [
-    "defaults",
-    "last 2 version"
-  ],
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.2"
-  }
+  "devDependencies": {}
 }
